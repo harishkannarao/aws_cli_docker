@@ -34,3 +34,11 @@
     aws configure list
 
     aws sts get-caller-identity 
+
+## Configure aws cli using environment variable
+
+    docker run --rm -it --env AWS_ACCESS_KEY_ID={access_key_id} --env AWS_SECRET_ACCESS_KEY={secret_access_key} --env AWS_DEFAULT_REGION=eu-west-2 --env AWS_DEFAULT_OUTPUT=json -v `pwd`/shared:/shared -v `pwd`/key-pair:/key-pair harishkannarao/awscli:latest /bin/bash
+
+    aws configure list
+
+    aws sts get-caller-identity 
