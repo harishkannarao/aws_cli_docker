@@ -3,19 +3,20 @@
     docker build --pull -t harishkannarao/awscli:latest -f Dockerfile .
 
 ## Create local directories
+    mkdir ignored
 
     # To store aws credentials
-    mkdir aws_credentials
+    mkdir ignored/aws_credentials
 
     # To store aws keypair
-    mkdir key-pair
+    mkdir ignored/key-pair
 
     # To store shared files with docker container
-    mkdir shared
+    mkdir ignored/shared
 
 ## Run aws client as a docker container
 
-    docker run --rm -it -v `pwd`/aws_credentials:/root/.aws -v `pwd`/shared:/shared -v `pwd`/key-pair:/key-pair harishkannarao/awscli:latest /bin/bash
+    docker run --rm -it -v `pwd`/ignored/aws_credentials:/root/.aws -v `pwd`/ignored/shared:/shared -v `pwd`/ignored/key-pair:/key-pair harishkannarao/awscli:latest /bin/bash
 
 ## Configure aws cli (oneoff initial setup)
 
@@ -37,7 +38,7 @@
 
 ## Configure aws cli using environment variable
 
-    docker run --rm -it --env AWS_ACCESS_KEY_ID={access_key_id} --env AWS_SECRET_ACCESS_KEY={secret_access_key} --env AWS_DEFAULT_REGION=eu-west-2 --env AWS_DEFAULT_OUTPUT=json -v `pwd`/shared:/shared -v `pwd`/key-pair:/key-pair harishkannarao/awscli:latest /bin/bash
+    docker run --rm -it --env AWS_ACCESS_KEY_ID={access_key_id} --env AWS_SECRET_ACCESS_KEY={secret_access_key} --env AWS_DEFAULT_REGION=eu-west-2 --env AWS_DEFAULT_OUTPUT=json -v `pwd`/ignored/shared:/shared -v `pwd`/ignored/key-pair:/key-pair harishkannarao/awscli:latest /bin/bash
 
     aws configure list
 
