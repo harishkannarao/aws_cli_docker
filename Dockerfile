@@ -26,6 +26,9 @@ RUN curl -s "https://releases.hashicorp.com/terraform/0.12.24/terraform_0.12.24_
 RUN unzip terraform.zip
 RUN mv terraform /usr/local/bin
 
+# Install Graphviz
+RUN apt-get install -y graphviz
+
 # Install kubernetes ctl
 RUN apt-get install -y apt-transport-https
 RUN curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
