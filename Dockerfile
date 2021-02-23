@@ -22,7 +22,7 @@ RUN curl -s "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ub
 RUN dpkg -i session-manager-plugin.deb
 
 # Install terraform
-RUN curl -s "https://releases.hashicorp.com/terraform/0.13.3/terraform_0.13.3_linux_amd64.zip" -o "terraform.zip"
+RUN curl -s "https://releases.hashicorp.com/terraform/0.14.6/terraform_0.14.6_linux_amd64.zip" -o "terraform.zip"
 RUN unzip terraform.zip
 RUN mv terraform /usr/local/bin
 
