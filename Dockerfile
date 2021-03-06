@@ -29,11 +29,6 @@ RUN mv terraform /usr/local/bin
 # Install Graphviz
 RUN apt-get install -y graphviz
 
-# Insstall Inframap
-RUN curl -L -s "https://github.com/cycloidio/inframap/releases/download/v0.5.2/inframap-linux-amd64.tar.gz" -o "inframap.tar.gz"
-RUN tar -xvzf inframap.tar.gz
-RUN mv inframap-linux-amd64 /usr/local/bin/inframap
-
 # Install bc
 RUN apt-get install -y bc
 
