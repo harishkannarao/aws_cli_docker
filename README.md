@@ -16,7 +16,11 @@
 
 ## Run aws client as a docker container
 
-    docker run --rm -it -v `pwd`/ignored/aws_credentials:/root/.aws -v `pwd`/ignored/shared:/shared -v `pwd`/ignored/key-pair:/key-pair harishkannarao/awscli:latest /bin/bash
+    docker run --rm --name aws-cli-latest -it -v `pwd`/ignored/aws_credentials:/root/.aws -v `pwd`/ignored/shared:/shared -v `pwd`/ignored/key-pair:/key-pair harishkannarao/awscli:latest /bin/bash
+
+## Run another terminal attaching to existing container
+
+    docker exec -it aws-cli-latest /bin/bash
 
 ## Configure aws cli (oneoff initial setup)
 
@@ -38,7 +42,7 @@
 
 ## Configure aws cli using environment variable
 
-    docker run --rm -it --env AWS_ACCESS_KEY_ID={access_key_id} --env AWS_SECRET_ACCESS_KEY={secret_access_key} --env AWS_DEFAULT_REGION=eu-west-2 --env AWS_DEFAULT_OUTPUT=json -v `pwd`/ignored/shared:/shared -v `pwd`/ignored/key-pair:/key-pair harishkannarao/awscli:latest /bin/bash
+    docker run --rm --name aws-cli-latest -it --env AWS_ACCESS_KEY_ID={access_key_id} --env AWS_SECRET_ACCESS_KEY={secret_access_key} --env AWS_DEFAULT_REGION=eu-west-2 --env AWS_DEFAULT_OUTPUT=json -v `pwd`/ignored/shared:/shared -v `pwd`/ignored/key-pair:/key-pair harishkannarao/awscli:latest /bin/bash
 
     aws configure list
 
